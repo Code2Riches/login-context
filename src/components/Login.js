@@ -23,7 +23,7 @@ const Login = () => {
 
     return (
         <div>Login
-            <p>Please Login: {login}</p>
+            <p>Please Login: {login.username},  {login.password}</p>
             <label htmlFor='username'>Username: </label>
                 <input 
                   type='text'
@@ -38,6 +38,10 @@ const Login = () => {
                   value={loginState.password}
                   onChange={onChangeHandler}
                 /><br/>
+                <button onClick={() => dispatch({
+                    type: 'LOGIN',
+                    data: loginState
+                })}>Dispatch</button>
         </div>
     )
     }
