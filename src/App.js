@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { ThemeContext } from './context/ThemeContext';
 import { LoginContext, LoginProvider } from './context/LoginContext';
+import Login from './components/Login';
 
 function App() {
   const [theme, setTheme] = useState('dark')
@@ -13,8 +14,7 @@ function App() {
         {theme, setTheme}
       }>
         <LoginProvider>
-          <h1>Login</h1>
-          <p>Yo!</p>
+          <Login />
         </LoginProvider>
       </ThemeContext.Provider>
     </div>
