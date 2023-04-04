@@ -23,7 +23,13 @@ const Login = () => {
 
     return (
         <div>Login
-            <p>Please Login: {login.username},  {login.password}</p>
+            {login.isAuth ? 
+            <button onClick={() => dispatch({
+                
+            })}>Logout</button>
+            : 
+            <>
+            <p>Please Login: </p> 
             <label htmlFor='username'>Username: </label>
                 <input 
                   type='text'
@@ -41,7 +47,9 @@ const Login = () => {
                 <button onClick={() => dispatch({
                     type: 'LOGIN',
                     data: loginState
-                })}>Dispatch</button>
+                })}>Login Dispatch</button>
+            </>
+            }
         </div>
     )
     }
