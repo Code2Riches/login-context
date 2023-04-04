@@ -25,7 +25,7 @@ const Login = () => {
         <div>Login
             {login.isAuth ? 
             <button onClick={() => dispatch({
-                
+                type: 'LOGOUT'
             })}>Logout</button>
             : 
             <>

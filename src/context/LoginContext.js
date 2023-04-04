@@ -3,9 +3,11 @@ import { createContext, useContext, useReducer } from "react"
 export const LoginContext = createContext(null)
 export const LoginDispatchContext = createContext(null)
 
+const baseURL = 'http://localhost:3001/api'
+
 const initialState = {
-        username: 'Hello',
-        password: 'World',
+        username: '',
+        password: '',
         isAuth: false
     }
 
@@ -27,14 +29,34 @@ const loginReducer = (login, action) => {
     switch (action.type) {
         case 'LOGIN':
             let isAuth = false;
-            (action.data.username === 'Violet') ? 
-            isAuth = true 
-            : 
-            isAuth = false
+            // (action.data.username === 'Violet') ? 
+            // isAuth = true 
+            // : 
+            // isAuth = false
+            
+            const fetchLogin = async () => {
+                try{
+                    let success = await fetch(baseURL + '/users/login/')
+                    let data = await success.json()
+                    console.log(data.message);
+                }
+                catch{
+
+                }
+            }
+            fetchLogin()
+
+
 
             return {
                 ...action.data, 
                 isAuth: isAuth 
+            }
+        case 'LOGOUT':
+            return {
+                username: '',
+                password: '',
+                isAuth: false
             }
                
         default:
