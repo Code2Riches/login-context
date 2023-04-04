@@ -15,7 +15,6 @@ function App() {
         <h1>Login</h1>
 
       </ThemeContext.Provider>
-      <Card />
     </div>
   );
 }
