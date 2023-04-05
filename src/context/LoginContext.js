@@ -1,9 +1,8 @@
 import { createContext, useContext, useReducer } from "react"
+import { fetchLogin } from "./loginContextHelper"
 
 export const LoginContext = createContext(null)
 export const LoginDispatchContext = createContext(null)
-
-const baseURL = 'http://localhost:3001/api'
 
 const initialState = {
         username: '',
@@ -34,16 +33,7 @@ const loginReducer = (login, action) => {
             // : 
             // isAuth = false
             
-            const fetchLogin = async () => {
-                try{
-                    let success = await fetch(baseURL + '/users/login/')
-                    let data = await success.json()
-                    console.log(data.message);
-                }
-                catch{
 
-                }
-            }
             fetchLogin()
 
 
