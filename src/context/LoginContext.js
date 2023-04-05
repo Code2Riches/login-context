@@ -32,15 +32,17 @@ const loginReducer = (login, action) => {
             // isAuth = true 
             // : 
             // isAuth = false
-            
 
-            fetchLogin()
-
-
+            // console.log(response.data.user)
+            // return {
+            //     username: action.data.username,
+            //     password: action.data.password, 
+            //     isAuth: true
+            // }
 
             return {
                 ...action.data, 
-                isAuth: isAuth 
+                isAuth: true
             }
         case 'LOGOUT':
             return {
