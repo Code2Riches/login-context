@@ -47,6 +47,8 @@ export const register = async (dispatch, newData) => {
         }
     }
     catch (error) {
-        console.log(error);
+        console.log('!@-------dispatch error-------@!')
+        console.log(error.response.status);
+        console.log(error.response.data.message);
     }
 }
