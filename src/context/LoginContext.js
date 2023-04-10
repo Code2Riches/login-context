@@ -27,7 +27,7 @@ export const LoginProvider = ({children}) => {
 const loginReducer = (login, action) => {
     switch (action.type) {
         case 'LOGIN':
-            let isAuth = false;
+            login.isAuth = false;
             // (action.data.username === 'Violet') ? 
             // isAuth = true 
             // : 
@@ -42,6 +42,12 @@ const loginReducer = (login, action) => {
 
             return {
                 ...action.data, 
+                isAuth: true
+            }
+        case 'REGISTER':
+            login.isAuth = false
+            return {
+                ...action.data,
                 isAuth: true
             }
         case 'LOGOUT':
