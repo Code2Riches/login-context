@@ -24,6 +24,7 @@ const Login = () => {
 
     return (
         <div>Login
+            <h3>Message: {login.message}</h3>
             {login.isAuth ? 
             <>
                 <h3>Username: {login.username}</h3>
@@ -34,8 +35,7 @@ const Login = () => {
             </>
             : 
             <>
-            <p>Please Login: </p> 
-            
+            {/* <p>Please Login: </p>  */}
             <label htmlFor='username'>Username: </label>
                 <input 
                   type='text'
@@ -50,8 +50,8 @@ const Login = () => {
                   value={loginState.password}
                   onChange={onChangeHandler}
                 /><br/>
-                {/* <button onClick={() => fetchLogin(dispatch, loginState)}>Login Dispatch</button> */}
-                <button onClick={() => register(dispatch, loginState)}>Login Dispatch</button>
+                <button onClick={() => fetchLogin(dispatch, loginState)}>Login</button>
+                <button onClick={() => register(dispatch, loginState)}>Register</button>
             </>
             }
         </div>

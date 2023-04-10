@@ -7,7 +7,8 @@ export const LoginDispatchContext = createContext(null)
 const initialState = {
         username: '',
         password: '',
-        isAuth: false
+        isAuth: false,
+        message: 'Please Log In!'
     }
 
 export const LoginProvider = ({children}) => {
@@ -27,22 +28,10 @@ export const LoginProvider = ({children}) => {
 const loginReducer = (login, action) => {
     switch (action.type) {
         case 'LOGIN':
-            login.isAuth = false;
-            // (action.data.username === 'Violet') ? 
-            // isAuth = true 
-            // : 
-            // isAuth = false
-
-            // console.log(response.data.user)
-            // return {
-            //     username: action.data.username,
-            //     password: action.data.password, 
-            //     isAuth: true
-            // }
-
             return {
                 ...action.data, 
-                isAuth: true
+                isAuth: true,
+                message: `Thank you logging in ${action.data.username}`
             }
         case 'REGISTER':
             login.isAuth = false
@@ -51,7 +40,8 @@ const loginReducer = (login, action) => {
             
             return {
                 ...action.data,
-                isAuth: true
+                isAuth: true,
+                message: `Thank you registering ${action.data.username}`
             }
         case 'LOGOUT':
             return {
