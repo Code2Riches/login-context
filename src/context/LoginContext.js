@@ -47,6 +47,12 @@ const loginReducer = (login, action) => {
                 password: '',
                 isAuth: false
             }
+        case 'DELETE':
+            return {
+                ...login,
+                isAuth: false,
+                message: action.data.message
+            }
         case 'ERROR':
             return {
                 username: '',

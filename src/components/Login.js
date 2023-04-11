@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { LoginContext, LoginDispatchContext } from '../context/LoginContext'
 import { ThemeContext } from '../context/ThemeContext'
-import { fetchLogin, register } from '../context/loginContextHelper'
+import { deleteUser, fetchLogin, register } from '../context/loginContextHelper'
 
 const Login = () => {
     
@@ -29,9 +29,13 @@ const Login = () => {
             <>
                 <h3>Username: {login.username}</h3>
                 <h3>Password: {login.password}</h3>
-                <button onClick={() => dispatch({
-                    type: 'LOGOUT'
+                <button 
+                    onClick={() => dispatch({
+                        type: 'LOGOUT'
                 })}>Logout</button>
+                <button
+                    onClick={() => deleteUser(dispatch, login.username)}
+                >Delete Me!</button>
             </>
             : 
             <>
@@ -45,7 +49,7 @@ const Login = () => {
                 /><br/>
                 <label htmlFor='password'>Password: </label>
                 <input 
-                  type='text'
+                  type='password'
                   name='password'
                   value={loginState.password}
                   onChange={onChangeHandler}
