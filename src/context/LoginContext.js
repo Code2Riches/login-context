@@ -17,9 +17,7 @@ export const LoginProvider = ({children}) => {
     return (
         <LoginContext.Provider value={login}>
             <LoginDispatchContext.Provider value={dispatch}>
-                <div>Hello World
                     {children}
-                </div> 
             </LoginDispatchContext.Provider>
        </LoginContext.Provider>
     )
@@ -49,7 +47,13 @@ const loginReducer = (login, action) => {
                 password: '',
                 isAuth: false
             }
-               
+        case 'ERROR':
+            return {
+                username: '',
+                password: '',
+                isAuth: false,
+                message: action.data.message
+            }  
         default:
             alert("Default")
             break;

@@ -6,49 +6,63 @@ export const fetchLogin = async (dispatch, loginData) => {
     try{
         let response = await Axios.post('/users/login', loginData)
         // let success = await response.json()  //fetch problem + solution
-        console.log(response.status, response.data);
+        // console.log(response.status, response.data);
         console.log('!@-------response.data.userObj-------@!')
         console.log(response.data.userObj)
-        
-        if (response.status  === 200  || response.status === 304) {
-            // return response.data
-            dispatch({
+
+        dispatch({
                 type: 'LOGIN',
                 data: response.data.userObj
             })
-        }
-        else {
-            throw new Error(response.status)
-        }
+        
     }
     catch (error) {
-        console.log(error);
+        if (error.response) {
+           dispatch({
+                type: 'ERROR',
+                data: {
+                    message: error.response.data.message
+                }
+            });
+        } else {
+            dispatch({
+                type: 'ERROR',
+                data: {
+                    message: 'No Response from Server'
+                }
+            });
+        }
     }
 }
-
 
 export const register = async (dispatch, newData) => {
     try{
         let response = await Axios.post('/users/register', newData)
         // let success = await response.json()  //fetch problem + solution
-        console.log(response.status, response.data);
+        // console.log(response.status, response.data);
         console.log('!@-------response.data.userObj-------@!')
         console.log(response.data.userObj)
         
-        if (response.status  === 200  || response.status === 304) {
-            // return response.data
-            dispatch({
-                type: 'REGISTER',
-                data: response.data.userObj
-            })
-        }
-        else {
-            throw new Error(response.status)
-        }
+        dispatch({
+            type: 'REGISTER',
+            data: response.data.userObj
+        })
     }
     catch (error) {
-        console.log('!@-------dispatch error-------@!')
-        console.log(error.response.status);
-        console.log(error.response.data.message);
+        if (error.response) {
+           dispatch({
+                type: 'ERROR',
+                data: {
+                    message: error.response.data.message
+                }
+            });
+        } else {
+            dispatch({
+                type: 'ERROR',
+                data: {
+                    message: 'No Response from Server'
+                }
+            });
+        }
     }
 }
