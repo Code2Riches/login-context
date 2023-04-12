@@ -12,7 +12,8 @@ export const fetchLogin = async (dispatch, loginData) => {
 
         dispatch({
                 type: 'LOGIN',
-                data: response.data.userObj
+                data: response.data.userObj,
+                token: response.data.token
             })
         
     }
