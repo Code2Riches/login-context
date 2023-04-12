@@ -67,8 +67,8 @@ export const register = async (dispatch, newData) => {
     }
 }
 
-export const deleteUser = async (dispatch, username) => {
-    let response = await Axios.post('/users/delete-user', username)
+export const deleteUser = async (dispatch, user) => {
+    let response = await Axios.post('/users/delete-user', {username: user})
     dispatch({
         type: 'DELETE',
         data: {
