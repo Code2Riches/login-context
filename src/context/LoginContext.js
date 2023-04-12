@@ -1,6 +1,4 @@
-import { createContext, useContext, useReducer } from "react"
-import { fetchLogin } from "./loginContextHelper"
-
+import { createContext, useReducer } from "react"
 export const LoginContext = createContext(null)
 export const LoginDispatchContext = createContext(null)
 
