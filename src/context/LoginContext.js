@@ -27,10 +27,10 @@ const loginReducer = (login, action) => {
     switch (action.type) {
         case 'LOGIN':
             return {
-                ...action.data, 
+                ...action.data.user, 
                 isAuth: true,
-                message: `Thank you logging in ${action.data.username}`,
-                token: action.token
+                message: `Thank you logging in ${action.data.user.username}`,
+                token: action.data.token
             }
         case 'REGISTER':
             login.isAuth = false

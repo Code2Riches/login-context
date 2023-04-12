@@ -10,10 +10,14 @@ export const fetchLogin = async (dispatch, loginData) => {
         console.log('!@-------response.data.userObj-------@!')
         console.log(response.data.userObj)
 
+        localStorage.setItem('jwtToken', response.data.token)
+
         dispatch({
                 type: 'LOGIN',
-                data: response.data.userObj,
-                token: response.data.token
+                data: {
+                    user: response.data.userObj,
+                    token: response.data.token
+                }
             })
         
     }
@@ -75,5 +79,12 @@ export const deleteUser = async (dispatch, user) => {
         data: {
             message: response.data.message
         }
+    })
+}
+
+export const logout = async (dispatch) => {
+    localStorage.removeItem('jwtToken')
+    dispatch({
+        type: 'LOGOUT'
     })
 }
