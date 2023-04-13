@@ -74,6 +74,7 @@ export const register = async (dispatch, newData) => {
 
 export const deleteUser = async (dispatch, user) => {
     let response = await Axios.post('/users/delete-user', {username: user})
+    localStorage.removeItem('jwtToken')
     dispatch({
         type: 'DELETE',
         data: {
