@@ -8,10 +8,6 @@ import { AuthProvider } from './context/AuthContext';
 
 import Login from './components/Login';
 
-import {checkAuthToken} from './lib/checkAuthToken'
-
-checkAuthToken()
-
 
 function App() {
   const [theme, setTheme] = useState('dark')
@@ -21,13 +17,13 @@ function App() {
       <ThemeContext.Provider value={
         {theme, setTheme}
       }>
-        <AuthProvider>
+        {/* <AuthProvider> */}
           Navbar
           <LoginProvider>
             <Login />
           </LoginProvider>
           Footer
-        </AuthProvider>
+        {/* </AuthProvider> */}
       </ThemeContext.Provider>
     </div>
   );

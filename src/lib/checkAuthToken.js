@@ -7,9 +7,10 @@ export const checkAuthToken = () => {
     if (jwtToken) {
         // set auth to true
         setHeaderToken(jwtToken)
+        return true
     } else {
         //set auth to false
-        
+        return false
     }
     
 }

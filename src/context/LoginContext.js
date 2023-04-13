@@ -26,37 +26,28 @@ const loginReducer = (login, action) => {
         case 'LOGIN':
             return {
                 ...action.data.user, 
-                isAuth: true,
                 message: `Thank you logging in ${action.data.user.username}`,
                 token: action.data.token
             }
         case 'REGISTER':
-            login.isAuth = false
-            console.log('!@-------Register-------@!')
-            console.log(action.data)
-            
             return {
                 ...action.data,
-                isAuth: true,
                 message: `Thank you registering ${action.data.username}`
             }
         case 'LOGOUT':
             return {
                 username: '',
                 password: '',
-                isAuth: false
             }
         case 'DELETE':
             return {
                 ...login,
-                isAuth: false,
                 message: action.data.message
             }
         case 'ERROR':
             return {
                 username: '',
                 password: '',
-                isAuth: false,
                 message: action.data.message
             }  
         default:

@@ -3,14 +3,16 @@ import { LoginContext, LoginDispatchContext } from '../context/LoginContext'
 import { ThemeContext } from '../context/ThemeContext'
 import { deleteUser, fetchLogin, logout, register } from '../context/loginContextHelper'
 import { checkAuthToken } from '../lib/checkAuthToken'
+import { AuthContext, AuthDispatchContext } from '../context/AuthContext'
 
 const Login = () => {
     
-    checkAuthToken()
     //const theme = useContext(ThemeContext)
 
     const login = useContext(LoginContext)
     const dispatch = useContext(LoginDispatchContext)
+    const auth = useContext(AuthContext)
+    const authDispatch = useContext(AuthDispatchContext)
 
     const [loginState, setLoginState] = useState({
         username: '',
@@ -27,14 +29,14 @@ const Login = () => {
     return (
         <div>Login
             <h3>Message: {login.message}</h3>
-            {login.isAuth ? 
+            {auth.isAuth ? 
             <>
                 <h3>Username: {login.username}</h3>
                 <h3>Password: {login.password}</h3>
                 <button 
-                    onClick={() => logout(dispatch)}>Logout</button>
+                    onClick={() => logout(dispatch, authDispatch)}>Logout</button>
                 <button
-                    onClick={() => deleteUser(dispatch, login.username)}
+                    onClick={() => deleteUser(dispatch, login.username, authDispatch)}
                 >Delete Me!</button>
             </>
             : 
@@ -54,8 +56,8 @@ const Login = () => {
                   value={loginState.password}
                   onChange={onChangeHandler}
                 /><br/>
-                <button onClick={() => fetchLogin(dispatch, loginState)}>Login</button>
-                <button onClick={() => register(dispatch, loginState)}>Register</button>
+                <button onClick={() => fetchLogin(dispatch, loginState, authDispatch)}>Login</button>
+                <button onClick={() => register(dispatch, loginState, authDispatch)}>Register</button>
             </>
             }
         </div>
