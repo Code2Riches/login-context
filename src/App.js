@@ -12,6 +12,7 @@ import {checkAuthToken} from './lib/checkAuthToken'
 
 checkAuthToken()
 
+
 function App() {
   const [theme, setTheme] = useState('dark')
   

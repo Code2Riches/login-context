@@ -2,9 +2,11 @@ import React, {useState, useContext} from 'react'
 import { LoginContext, LoginDispatchContext } from '../context/LoginContext'
 import { ThemeContext } from '../context/ThemeContext'
 import { deleteUser, fetchLogin, logout, register } from '../context/loginContextHelper'
+import { checkAuthToken } from '../lib/checkAuthToken'
 
 const Login = () => {
     
+    checkAuthToken()
     //const theme = useContext(ThemeContext)
 
     const login = useContext(LoginContext)
